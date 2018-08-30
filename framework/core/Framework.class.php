@@ -42,6 +42,8 @@ class Framework
 		// 定义当前访问控制器名及方法名
 		define('CONTROLLER', isset($URI[1])?strtolower($URI[1]):'index');				// 当前访问控制器
 		define('ACTION', isset($URI[2])?strtolower($URI[2]):'index');					// 当前访问方法
+		// 引入基础文件
+		require CORE_PATH . 'Controller.php';
 	}
 	/**
 	 * 注册自动加载

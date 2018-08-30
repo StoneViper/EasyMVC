@@ -2,11 +2,18 @@
 
 namespace app\frontend\controller;
 
-class IndexController
+use framework\core\Controller;
+
+class IndexController extends Controller
 {
 	public function ActionIndex()
 	{
-		echo "1";
+		$data = [
+			'name' => 'alice',
+			'sex' => 'girl'
+		];
+		$this->assign('data', $data);
+		$this->display();
 	}
 }
 
