@@ -26,6 +26,9 @@ class Framework
 		define('CONFIG_PATH', APP_PATH . 'config' . DS);				// 配置文件目录
 		define('CORE_PATH', FRAMEWORK_PATH . 'core' . DS);				// 核心框架目录
 		define('PAGE_PATH', FRAMEWORK_PATH . 'page' . DS);				// 静态页目录
+		define('DB_PATH', FRAMEWORK_PATH . 'database' . DS);			// 数据库类目录
+		define('HELPER_PATH', FRAMEWORK_PATH . 'helper' . DS);			// 辅助函数目录
+		define('LIB_PATH', FRAMEWORK_PATH . 'libraries' . DS);			// 工具类目录
 		define('PUBLIC_PATH', APP_PATH . 'public' . DS);				// 资源文件目录
 		define('UPLOADS_PATH', PUBLIC_PATH . 'uploads' . DS);			// 上传文件目录
 		define('PUBLIC_BASE_PATH', PUBLIC_PATH . 'base' . DS);			// 基础资源文件目录
@@ -43,7 +46,11 @@ class Framework
 		define('CONTROLLER', isset($URI[1])?strtolower($URI[1]):'index');				// 当前访问控制器
 		define('ACTION', isset($URI[2])?strtolower($URI[2]):'index');					// 当前访问方法
 		// 引入基础文件
-		require CORE_PATH . 'Controller.php';
+		require CORE_PATH . 'Controller.php';		// 基础控制器类
+		require DB_PATH . 'Database.php';			// 数据库类
+		require CORE_PATH . 'Model.php';			// 基础模型类
+		// 引入配置文件
+		$GLOBALS['dbconfig'] =  require CONFIG_PATH . 'db.php';
 	}
 	/**
 	 * 注册自动加载
@@ -62,10 +69,10 @@ class Framework
 			if (!is_file(CONTROLLER_PATH . (substr($classname, strripos($classname , DS)+1). '.php'))) {
 				require PAGE_PATH . "404.html";
 			}else{
-				require CONTROLLER_PATH . (substr($classname, strripos($classname , DS)+1). '.php');
+				require CONTROLLER_PATH . (substr($classname, strripos($classname , DS)+1) . '.php');
 			}
 		}elseif (substr($classname, -5) == 'Model') {
-			require MODEL_PATH . "{$classname}.php";
+			require MODEL_PATH . (substr($classname, strripos($classname , DS)+1) . '.php');
 		}else{
 			// 其他情况
 		}

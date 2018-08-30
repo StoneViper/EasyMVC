@@ -3,6 +3,6 @@
  * 入口文件
  */
 
-require_once 'framework/core/Framework.class.php';
+require_once 'framework/core/Framework.php';
 
 framework\core\Framework::run();
