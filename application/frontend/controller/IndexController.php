@@ -10,6 +10,8 @@ class IndexController extends Controller
 	public function ActionIndex()
 	{
 		$model = new UserModel('user');
+		echo "<pre>";
+		// var_dump($model->db->select('id=1'));
 	}
 }
 

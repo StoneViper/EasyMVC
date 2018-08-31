@@ -38,10 +38,11 @@ class Framework
 		// 获取访问参数
 		$parameter = trim(str_replace($root, '', $request), '/');
 		$URI = explode('/', $parameter);
-		define('PALFORM', APP_PATH . (empty($URI[0])?'frontend':strtolower($URI[0])) . DS);
-		define('CONTROLLER_PATH', PALFORM . 'controller' . DS);							// 控制器层目录
-		define('MODEL_PATH', PALFORM . 'model' . DS);									// 模型层目录
-		define('VIEW_PATH', PALFORM . 'view' . DS);										// 视图层目录
+		define('PALFORM', (empty($URI[0])?'frontend':strtolower($URI[0])) . DS);
+		define('PALFORM_PATH', APP_PATH . (empty($URI[0])?'frontend':strtolower($URI[0])) . DS);
+		define('CONTROLLER_PATH', PALFORM_PATH . 'controller' . DS);							// 控制器层目录
+		define('MODEL_PATH', PALFORM_PATH . 'model' . DS);									// 模型层目录
+		define('VIEW_PATH', PALFORM_PATH . 'view' . DS);										// 视图层目录
 		// 定义当前访问控制器名及方法名
 		define('CONTROLLER', isset($URI[1])?strtolower($URI[1]):'index');				// 当前访问控制器
 		define('ACTION', isset($URI[2])?strtolower($URI[2]):'index');					// 当前访问方法
@@ -84,8 +85,7 @@ class Framework
 	{
 		// 实例化类并调用方法
 		$controller_name = ucfirst(CONTROLLER) . 'Controller';
-		$class_map = 'app\frontend\controller\\' . $controller_name;
-		// var_dump($class_map);
+		$class_map = 'app\\'.trim(PALFORM, DS).'\\controller\\' . $controller_name;
 		$action_name = 'Action' . ucfirst(ACTION);
 		$controller = new $class_map;
 		$controller -> $action_name();
