@@ -11,7 +11,7 @@ class IndexController extends Controller
 	{
 		$model = new UserModel('user');
 		echo "<pre>";
-		// var_dump($model->db->select('id=1'));
+		// var_dump($model->db->up(['username'=>'dabai','id'=>'88'],'id=2'));
 	}
 }
 
