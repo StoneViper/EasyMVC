@@ -29,6 +29,7 @@ class Framework
 		define('DB_PATH', FRAMEWORK_PATH . 'database' . DS);			// 数据库类目录
 		define('HELPER_PATH', FRAMEWORK_PATH . 'helper' . DS);			// 辅助函数目录
 		define('LIB_PATH', FRAMEWORK_PATH . 'libraries' . DS);			// 工具类目录
+		define('SMARTY_PATH', FRAMEWORK_PATH . 'smarty' . DS);			// Smarty目录
 		define('PUBLIC_PATH', APP_PATH . 'public' . DS);				// 资源文件目录
 		define('UPLOADS_PATH', PUBLIC_PATH . 'uploads' . DS);			// 上传文件目录
 		define('PUBLIC_BASE_PATH', PUBLIC_PATH . 'base' . DS);			// 基础资源文件目录
@@ -46,12 +47,15 @@ class Framework
 		// 定义当前访问控制器名及方法名
 		define('CONTROLLER', isset($URI[1])?strtolower($URI[1]):'index');				// 当前访问控制器
 		define('ACTION', isset($URI[2])?strtolower($URI[2]):'index');					// 当前访问方法
+		define('CUR_VIEW_PATH', VIEW_PATH . CONTROLLER . DS);					// 当前访问视图
 		// 引入基础文件
 		require CORE_PATH . 'Controller.php';		// 基础控制器类
 		require DB_PATH . 'Database.php';			// 数据库类
 		require CORE_PATH . 'Model.php';			// 基础模型类
+		require SMARTY_PATH . 'Smarty.php';			// Smarty类
+		require CORE_PATH . 'View.php';				// 基础视图类
 		// 引入配置文件
-		$GLOBALS['dbconfig'] =  require CONFIG_PATH . 'db.php';
+		$GLOBALS['config'] =  require CONFIG_PATH . 'config.php';
 	}
 	/**
 	 * 注册自动加载

@@ -16,14 +16,14 @@ class Model
 	function __construct($table)
 	{
 		// 存储配置信息
-		$config['dbms'] = $GLOBALS['dbconfig']['dbms'];
-		$config['host'] = $GLOBALS['dbconfig']['host'];
-		$config['user'] = $GLOBALS['dbconfig']['user'];
-		$config['password'] = $GLOBALS['dbconfig']['password'];
-		$config['dbname'] = $GLOBALS['dbconfig']['dbname'];
-		$config['port'] = $GLOBALS['dbconfig']['port'];
-		$config['prefix'] = $GLOBALS['dbconfig']['prefix'];
-		$config['charset'] = $GLOBALS['dbconfig']['charset'];
+		$config['dbms'] = $GLOBALS['config']['db']['dbms'];
+		$config['host'] = $GLOBALS['config']['db']['host'];
+		$config['user'] = $GLOBALS['config']['db']['user'];
+		$config['password'] = $GLOBALS['config']['db']['password'];
+		$config['dbname'] = $GLOBALS['config']['db']['dbname'];
+		$config['port'] = $GLOBALS['config']['db']['port'];
+		$config['prefix'] = $GLOBALS['config']['db']['prefix'];
+		$config['charset'] = $GLOBALS['config']['db']['charset'];
 		$config['table'] = $table;
 		// 实例化数据库类
 		$this -> db = new Database($config);
