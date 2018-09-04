@@ -13,10 +13,15 @@ return [
 	],
 	// 视图配置信息
 	'view' => [
-		'debugging' => 'false',		// 开启Debug
+		// 'debugging' => 'false',		// Debug
 		'left_delimiter' => '{',	// 左定界符
 		'right_delimiter' => '}',	// 右定界符
 		'template_dir' => CUR_VIEW_PATH,		// 模板目录
 		'compile_dir' => CUR_VIEW_PATH . DS . 'compile',		// 编译文件目录
+	],
+	'cache' =>[
+		'memcache_start' => TRUE,	// 开启memcahced
+		'host' => '127.0.0.1',			// 地址
+		'port' => '11211',				// 目标端口
 	],
 ];

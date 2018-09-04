@@ -57,6 +57,7 @@ class Framework
 		require DB_PATH . 'Database.php';			// 数据库类
 		require CORE_PATH . 'Model.php';			// 基础模型类
 		require LIB_PATH . 'Smarty.php';			// Smarty类
+		require LIB_PATH . 'Memcached.php';			// Mem缓存类
 		require CORE_PATH . 'View.php';				// 基础视图类
 
 		// 调用路由方法
