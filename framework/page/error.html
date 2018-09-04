@@ -1,0 +1,16 @@
+<style tpe="text/css">
+div{
+ margin:10px 0px;
+}
+.errorDIR{
+ border:1px solid #96C2F1;
+ background-color:#EFF7FF;
+ width:100%;
+ height:200px;
+}
+</style>
+<div class="errorDIR">
+	<h2>警告类型：<?php echo $type ?></h2>
+	<p>提示信息：<?php echo $message ?></p>
+	<p>出错文件：<?php echo $file?>（<?php echo $line?>行）</p>
+</div>
