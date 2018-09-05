@@ -31,6 +31,10 @@ class Framework
 		define('UPLOADS_PATH', PUBLIC_PATH . 'uploads' . DS);			// 上传文件目录
 		define('PUBLIC_BASE_PATH', PUBLIC_PATH . 'base' . DS);			// 基础资源文件目录
 
+		// 引入自动加载类
+		require LIB_PATH . 'Autoload.php';
+		// 调用自动加载方法
+		\framework\libraries\Autoload::autoload();
 		// 引入路由类
 		require LIB_PATH . 'Router.php';
 		$router_type =  require CONFIG_PATH . 'router.php';
@@ -64,7 +68,7 @@ class Framework
 		\framework\libraries\CatchError::start();
 		
 		// 调用路由方法
-		$router -> toload();
+		$router -> router();
 	}
 
 }

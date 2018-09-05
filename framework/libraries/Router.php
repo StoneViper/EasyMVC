@@ -18,16 +18,16 @@ class Router
 		// 判断url类型
 		switch ($type) {
 			case '0':
-				$url = $this->baseUrl();
+				$this->baseUrl();
 				break;
 			case '1':
-				$url = $this->pathInfoUrl();
+				$this->pathInfoUrl();
 				break;
 			case '2':
-				$url = $this->rewriteUrl();
+				$this->rewriteUrl();
 				break;
 			default:
-				# code...
+				return 'Error Code!';
 				break;
 		}
 	}
@@ -88,42 +88,9 @@ class Router
 		$this->url['a'] = isset($URI['2'])?strtolower($URI['2']):'Index';
 	}
 	/**
-	 * 外部调用加载方法
-	 */
-	public function toload()
-	{
-		self::autoload();
-		self::router();
-	}
-	/**
-	 * 注册自动加载
-	 */
-	protected static function autoload()
-	{
-		spl_autoload_register(array(__CLASS__, "load"));
-	}
-	/**
-	 * 加载方法
-	 * @param  string $classname 类名
-	 */
-	protected static function load($classname)
-	{
-		if (substr($classname, -10) == 'Controller') {
-			if (!is_file(CONTROLLER_PATH . (substr($classname, strripos($classname , DS)+1). '.php'))) {
-				require PAGE_PATH . "404.html";
-			}else{
-				require CONTROLLER_PATH . (substr($classname, strripos($classname , DS)+1) . '.php');
-			}
-		}elseif (substr($classname, -5) == 'Model') {
-			require MODEL_PATH . (substr($classname, strripos($classname , DS)+1) . '.php');
-		}else{
-			// 其他情况
-		}
-	}
-	/**
 	 * 路由方法
 	 */
-	protected static function router()
+	public function router()
 	{
 		// 实例化类并调用方法
 		$controller_name = ucfirst(CONTROLLER) . 'Controller';
