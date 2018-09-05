@@ -96,6 +96,3 @@ class CatchError
 		require PAGE_PATH . 'error.html';
 	}
 }
-
-
- ?>

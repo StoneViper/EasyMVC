@@ -138,4 +138,3 @@ class Database
 		return sprintf("{$values}");
 	}
 }
- ?>

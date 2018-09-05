@@ -50,8 +50,3 @@ class Controller
 		}
 	}
 }
-
-
-
-
- ?>

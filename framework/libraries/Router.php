@@ -100,7 +100,3 @@ class Router
 		$controller -> $action_name();
 	}
 }
-
-
-
- ?>
